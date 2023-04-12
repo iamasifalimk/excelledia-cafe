@@ -18,7 +18,7 @@
                             </p>
                             <mat-chip-list #chipList class="mt-1">
                                 <mat-chip fxLayoutGap="15px" selected color="primary">
-                                    <button mat-icon-button (click)="handleIncrementCount(dish?.dish_id)">
+                                    <button mat-icon-button (click)="handleIncrementCount(dish?.dish_id,dish)">
                                         <mat-icon>add</mat-icon>
                                     </button>
                                     <span *ngIf="orderCount[dish.dish_id];else zero">{{orderCount[dish.dish_id]}}</span>

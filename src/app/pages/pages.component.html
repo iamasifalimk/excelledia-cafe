@@ -2,7 +2,7 @@
     <mat-toolbar-row fxLayoutAlign="space-between center">
 
         <div fxLayoutAlign="start center">
-            <button mat-icon-button>
+            <button mat-icon-button routerLink="/">
                 <mat-icon>arrow_back</mat-icon>
             </button>
             <span>UNI Restro Cafe</span>
@@ -10,7 +10,7 @@
 
         <div>
             <span class="mat-body">My Orders</span>
-            <button mat-icon-button >
+            <button mat-icon-button (click)="handleRedirectToCart()">
                 <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
             </button>
         </div>

@@ -1,0 +1,32 @@
+<div class="p-2">
+    <ng-container *ngFor="let dish of cartItems">
+        <mat-card fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="5px">
+            <div fxLayout="row" fxLayoutGap="5px">
+                <mat-icon class="mt-1" [color]="dish.dish_Type == 2 ? 'primary' : 'warn'" color="primary">
+                    radio_button_checked</mat-icon>
+                <div fxLayout="column" fxLayoutGap="5px">
+                    <h2 class="m-0">{{dish?.dish_name}}</h2>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <strong>{{dish?.dish_currency}} {{dish?.dish_price}}</strong>
+                        <strong>{{dish?.dish_calories}} Calories</strong>
+                    </div>
+                    <p class="mat-body color-grey">
+                        {{dish?.dish_description}}
+                    </p>
+                    <p>
+                        count:{{dish?.count}}
+                    </p>
+                    <p *ngIf="dish?.addonCat?.length" class="mat-body color-red">
+                        Customizations Available
+                    </p>
+                </div>
+            </div>
+            <img class="item-image" [src]="dish?.dish_image" alt="food-item"
+                onerror="this.src='assets/images/default-product-img.svg'">
+        </mat-card>
+    </ng-container>
+
+    <ng-container *ngIf="!cartItems.length">
+        <p class="empty">Cart is empty</p>
+    </ng-container>
+</div>

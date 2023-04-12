@@ -15,6 +15,11 @@ export const routes: Routes = [
 						(m) => m.DishCategoriesModule
 					),
 			},
+			{
+				path: 'cart',
+				loadChildren: () =>
+					import('./pages/cart/cart.module').then((m) => m.CartModule),
+			},
 		],
 	},
 ];
