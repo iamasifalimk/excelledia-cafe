@@ -1,0 +1,43 @@
+<mat-tab-group mat-stretch-tabs class="mat-elevation-z0" color="warn">
+    
+    <ng-container *ngFor="let category of dishCategoriesList?.table_menu_list">
+        <mat-tab [label]="category?.menu_category">
+            <ng-container *ngFor="let dish of category?.category_dishes">
+                <mat-card fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="5px">
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <mat-icon class="mt-1" [color]="dish.dish_Type == 2 ? 'primary' : 'warn'" color="primary">
+                            radio_button_checked</mat-icon>
+                        <div fxLayout="column" fxLayoutGap="5px">
+                            <h2 class="m-0">{{dish?.dish_name}}</h2>
+                            <div fxLayout="row" fxLayoutAlign="space-between center">
+                                <strong>{{dish?.dish_currency}} {{dish?.dish_price}}</strong>
+                                <strong>{{dish?.dish_calories}} Calories</strong>
+                            </div>
+                            <p class="mat-body color-grey">
+                                {{dish?.dish_description}}
+                            </p>
+                            <mat-chip-list #chipList class="mt-1">
+                                <mat-chip fxLayoutGap="15px" selected color="primary">
+                                    <button mat-icon-button (click)="handleIncrementCount(dish?.dish_id)">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                    <span *ngIf="orderCount[dish.dish_id];else zero">{{orderCount[dish.dish_id]}}</span>
+                                    <ng-template #zero>
+                                        <span>0</span>
+                                    </ng-template>
+                                    <button mat-icon-button (click)="handleDecrementCount(dish?.dish_id)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </mat-chip>
+                            </mat-chip-list>
+                            <p *ngIf="dish?.addonCat?.length" class="mat-body color-red">
+                                Customizations Available
+                            </p>
+                        </div>
+                    </div>
+                    <img class="item-image" [src]="dish?.dish_image" alt="food-item" onerror="this.src='assets/images/default-product-img.svg'">
+                </mat-card>
+            </ng-container>
+        </mat-tab>
+    </ng-container>
+</mat-tab-group>

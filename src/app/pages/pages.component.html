@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+
+        <div fxLayoutAlign="start center">
+            <button mat-icon-button>
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <span>UNI Restro Cafe</span>
+        </div>
+
+        <div>
+            <span class="mat-body">My Orders</span>
+            <button mat-icon-button >
+                <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
